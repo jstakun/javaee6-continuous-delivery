@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.NotFoundException;
 
 @ApplicationScoped
 public class PersonDatabase {
@@ -29,11 +28,11 @@ public class PersonDatabase {
         return persons.toArray(new Person[0]);
     }
 
-    public Person getPerson(int id) {
+    public Person getPerson(int id) throws Exception {
         if (id < persons.size()) {
             return persons.get(id);
         }
 
-        throw new NotFoundException("Person with id \"" + id + "\" not found.");
+        throw new Exception("Person with id \"" + id + "\" not found.");
     }
 }
