@@ -26,7 +26,7 @@ public class PersonTest {
 
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
-        return ShrinkWrap.create(WebArchive.class)
+        return ShrinkWrap.create(WebArchive.class, "test.war")
                 .addPackage("org.javaee7.sample");
     }
 
