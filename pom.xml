@@ -67,6 +67,12 @@
       		<version>${version.resteasy}</version>
       		<scope>test</scope>
    		</dependency>
+   		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.3</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
     <profiles> 
         <profile>
@@ -123,42 +129,5 @@
                 </dependency>
             </dependencies>
         </profile>  
-        	<profile>
-		    <id>arquillian-jbossas-managed</id>	    
-		    <build>
-    			<plugins>
-    			    <plugin>
-                  		<groupId>org.apache.maven.plugins</groupId>
-                  		<artifactId>maven-surefire-plugin</artifactId>
-                  		<configuration>
-                     		<systemPropertyVariables>
-                        		<arquillian.launch>jbossas-managed</arquillian.launch>
-                     		</systemPropertyVariables>
-                  		</configuration>
-               		</plugin>
-    			</plugins>
-			</build> 
-    		<dependencies>
-        		<dependency>
-            		<groupId>org.jboss.spec</groupId>
-            		<artifactId>jboss-javaee-6.0</artifactId>
-            		<version>3.0.2.Final</version>
-            		<type>pom</type>
-            		<scope>provided</scope>
-            		<exclusions>
-                 		<exclusion>
-                     		<groupId>xalan</groupId>
-                     		<artifactId>xalan</artifactId>
-                 		</exclusion>
-             		</exclusions>
-        		</dependency>
-        		<dependency>
-            		<groupId>org.jboss.as</groupId>
-            		<artifactId>jboss-as-arquillian-container-managed</artifactId>
-            		<version>7.2.0.Final</version>
-            		<scope>test</scope>
-        		</dependency>
-    		</dependencies>
-		</profile>  
     </profiles>
 </project>
