@@ -21,7 +21,7 @@ public class PersonResource {
     }
 
     @GET
-    @Path("{id}")
+    @Path("{id}")  
     @Produces("application/xml")
     public Person get(@PathParam("id") int id) throws Exception {
         return database.getPerson(id);
