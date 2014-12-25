@@ -1,5 +1,6 @@
 package org.javaee7.sample;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -11,7 +12,7 @@ import javax.ws.rs.Produces;
 @Path("persons")
 public class PersonResource {
 
-    @Inject
+    @EJB
     PersonDatabase database;
 
     @GET
