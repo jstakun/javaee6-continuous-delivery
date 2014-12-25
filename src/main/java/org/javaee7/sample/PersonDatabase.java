@@ -9,8 +9,6 @@ import javax.ejb.Startup;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-@Startup
-@Singleton
 public class PersonDatabase {
 
     List<Person> persons;
