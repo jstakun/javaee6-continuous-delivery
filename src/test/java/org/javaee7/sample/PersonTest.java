@@ -78,9 +78,7 @@ public class PersonTest {
         response = target2.resolveTemplate("id", 1).request().get(Person.class);
         assertEquals("Leonard", response.getName());*/
     	
-        ClientRequest personsRequest = new ClientRequest(new URL(base, "resources/persons").toExternalForm());
-        
-        personsRequest.queryParameter("id", "0");
+        ClientRequest personsRequest = new ClientRequest(new URL(base, "resources/persons/0").toExternalForm());
         
         Person response = personsRequest.get(Person.class).getEntity();
         

@@ -18,14 +18,14 @@ public class PersonResource {
     }
     
     @GET
-    @Produces("application/json")
+    @Produces("application/xml")
     public Person[] get() {
         return database.currentList();
     }
 
     @GET
     @Path("{id}")  
-    @Produces("application/json")
+    @Produces("application/xml")
     public Person get(@PathParam("id") int id) throws Exception {
         return database.getPerson(id);
     }
