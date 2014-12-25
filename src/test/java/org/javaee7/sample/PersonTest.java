@@ -3,15 +3,14 @@ package org.javaee7.sample;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.List;
 
-
-//import javax.ws.rs.client.Client;
-//import javax.ws.rs.client.ClientBuilder;
-//import javax.ws.rs.client.WebTarget;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.resteasy.client.ClientRequest;
+import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.util.GenericType;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
@@ -46,22 +45,25 @@ public class PersonTest {
 
     /**
      * Test of get method, of class Person.
-     * @throws MalformedURLException 
+     * @throws Exception 
      */
     @Test
-    public void testGetAll() throws MalformedURLException {
-        /*Person[] persons = target.request().get(Person[].class);
-        assertEquals(8, persons.length);
-
-        assertEquals("Penny", persons[0].getName());
-        assertEquals("Leonard", persons[1].getName());
-        assertEquals("Sheldon", persons[2].getName());
-        assertEquals("Amy", persons[3].getName());
-        assertEquals("Howard", persons[4].getName());
-        assertEquals("Bernadette", persons[5].getName());
-        assertEquals("Raj", persons[6].getName());
-        assertEquals("Priya", persons[7].getName());*/
+    public void testGetAll() throws Exception {
+        ClientRequest personsRequest = new ClientRequest(new URL(base, "resources/persons").toExternalForm());
+    	
+    	ClientResponse<List<Person>> response = personsRequest.get(new GenericType<List<Person>>(){});
+    	List<Person> persons = response.getEntity();
         
+    	assertEquals(8, persons.size());
+
+        assertEquals("Penny", persons.get(0).getName());
+        assertEquals("Leonard", persons.get(1).getName());
+        assertEquals("Sheldon", persons.get(2).getName());
+        assertEquals("Amy", persons.get(3).getName());
+        assertEquals("Howard", persons.get(4).getName());
+        assertEquals("Bernadette", persons.get(5).getName());
+        assertEquals("Raj", persons.get(6).getName());
+        assertEquals("Priya", persons.get(7).getName());
     }
 
     /**
@@ -70,18 +72,16 @@ public class PersonTest {
      */
     @Test
     public void testGetOne() throws Exception {
-        /*WebTarget target2 = target.path("{id}");
+        ClientRequest personRequest = new ClientRequest(new URL(base, "resources/persons/0").toExternalForm());
         
-        Person response = target2.resolveTemplate("id", 0).request().get(Person.class);
-        assertEquals("Penny", response.getName());
-        
-        response = target2.resolveTemplate("id", 1).request().get(Person.class);
-        assertEquals("Leonard", response.getName());*/
-    	
-        ClientRequest personsRequest = new ClientRequest(new URL(base, "resources/persons/0").toExternalForm());
-        
-        Person response = personsRequest.get(Person.class).getEntity();
+        Person response = personRequest.get(Person.class).getEntity();
         
         assertEquals("Penny", response.getName());
+        
+        personRequest = new ClientRequest(new URL(base, "resources/persons/1").toExternalForm());
+        
+        response = personRequest.get(Person.class).getEntity();
+        
+        assertEquals("Leonard", response.getName());
     }
 }
