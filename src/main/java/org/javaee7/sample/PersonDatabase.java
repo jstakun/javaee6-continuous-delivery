@@ -17,6 +17,7 @@ public class PersonDatabase {
 
     @PostConstruct
     public void init() {
+    	System.out.println("PersonDatabase Init called...");
         persons = Arrays.asList(
                 new Person("Penny"), 
                 new Person("Leonard"), 
