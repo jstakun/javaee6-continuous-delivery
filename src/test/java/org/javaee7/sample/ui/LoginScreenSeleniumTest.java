@@ -67,7 +67,8 @@ public class LoginScreenSeleniumTest {
     
     @Test
     public void should_login_with_valid_credentials() {
-        browser.open(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
+    	
+    	browser.open(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
         
         browser.type("id=loginForm:username", "user1");
         browser.type("id=loginForm:password", "demo");

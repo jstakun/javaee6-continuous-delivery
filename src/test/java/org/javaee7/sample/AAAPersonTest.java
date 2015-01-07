@@ -21,7 +21,7 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class PersonTest {
+public class AAAPersonTest {
 
     //private WebTarget target;
 
