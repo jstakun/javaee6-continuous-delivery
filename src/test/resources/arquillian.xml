@@ -16,4 +16,7 @@
             <property name="jbossHome">/opt/jboss-eap-6.2</property>
          </configuration>   
     </container>
+    <extension qualifier="selenium">
+        <property name="browser">*firefox</property>
+    </extension> 
 </arquillian>
