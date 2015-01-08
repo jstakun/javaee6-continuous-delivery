@@ -43,7 +43,10 @@ import com.thoughtworks.selenium.DefaultSelenium;
 @RunWith(Arquillian.class)
 public class LoginScreenSeleniumTest {
     private static final String WEBAPP_SRC = "src/main/webapp";
-            
+    
+    @ArquillianResource
+    URL deploymentUrl;
+    
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "login.war")
@@ -59,11 +62,10 @@ public class LoginScreenSeleniumTest {
                 "faces-config.xml");
     }
     
-    //@Drone
-    //DefaultSelenium browser;
+    //Uncomment to run selenium browser test
     
-    @ArquillianResource
-    URL deploymentUrl;
+    @Drone
+    DefaultSelenium browser;
     
     @Test
     public void should_login_with_valid_credentials() {

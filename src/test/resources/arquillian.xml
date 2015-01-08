@@ -17,6 +17,8 @@
          </configuration>   
     </container>
     <extension qualifier="selenium">
-        <property name="browser">*firefox</property>
+        <property name="browser">firefox</property>
+        <property name="host">localhost</property>
+        <property name="port">15555</property>
     </extension> 
 </arquillian>
