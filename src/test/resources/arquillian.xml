@@ -17,8 +17,13 @@
          </configuration>   
     </container>
     <extension qualifier="selenium">
-        <property name="browser">firefox</property>
+        <property name="browser">*firefox</property>
+        <property name="serverPort">15555</property>  
+        <property name="serverHost">localhost</property>              
+    </extension> 
+    <extension qualifier="selenium-server">
+        <property name="enable">true</property>
         <property name="host">localhost</property>
         <property name="port">15555</property>
-    </extension> 
+	</extension>
 </arquillian>
