@@ -18,12 +18,12 @@
     </container>
     <extension qualifier="selenium">
         <property name="browser">*firefox</property>
-        <property name="serverPort">15555</property>  
-        <property name="serverHost">localhost</property>              
+        <property name="serverPort">15556</property>  
+        <property name="serverHost">${env.OPENSHIFT_JBOSSEAP_IP}</property>              
     </extension> 
     <extension qualifier="selenium-server">
         <property name="enable">true</property>
-        <property name="host">localhost</property>
-        <property name="port">15555</property>
+        <property name="host">${env.OPENSHIFT_JBOSSEAP_IP}</property>
+        <property name="port">15556</property>
 	</extension>
 </arquillian>
