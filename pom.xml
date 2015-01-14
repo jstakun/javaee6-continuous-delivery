@@ -134,17 +134,24 @@
 			<artifactId>operadriver</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--dependency>
-			<groupId>com.github.detro.ghostdriver</groupId>
-			<artifactId>phantomjsdriver</artifactId>
-			<scope>test</scope>
-		</dependency-->
 		<dependency>
         	<groupId>org.jboss.arquillian.extension</groupId>
         	<artifactId>arquillian-phantom-driver</artifactId>
         	<version>1.1.2.Final</version>
         	<scope>test</scope>
    		 </dependency>
+   		 <dependency>
+    		<groupId>org.jboss.arquillian.extension</groupId>
+    		<artifactId>arquillian-drone-webdriver-depchain</artifactId>
+    		<type>pom</type>
+    		<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpclient</artifactId>
+    		<version>4.3.4</version>
+    		<scope>test</scope>
+		</dependency>
     </dependencies>
     <profiles> 
         <profile>

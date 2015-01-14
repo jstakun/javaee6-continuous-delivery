@@ -33,6 +33,8 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 
@@ -62,8 +64,9 @@ public class LoginScreenSeleniumTest {
                 "faces-config.xml");
     }
     
-    @Drone
+    /*@Drone
     DefaultSelenium browser;
+    
     
     @Test
     public void should_login_with_valid_credentials() {
@@ -77,5 +80,17 @@ public class LoginScreenSeleniumTest {
 
         Assert.assertTrue("User should be logged in!",
             browser.isElementPresent("xpath=//li[contains(text(),'Welcome')]"));
+    }*/
+    
+    @Drone
+    WebDriver webDriver;
+    
+    @Test
+    public void with_web_driver() {
+    	webDriver.get(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
+    	webDriver.findElement(By.id("loginForm:username")).sendKeys("user1");
+    	webDriver.findElement(By.id("loginForm:password")).sendKeys("demo");
+    	webDriver.findElement(By.id("loginForm:login")).click();
+    	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome')]")).isDisplayed());
     }
 }

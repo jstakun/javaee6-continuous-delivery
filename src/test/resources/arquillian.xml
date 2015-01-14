@@ -17,7 +17,7 @@
          </configuration>   
     </container>
     <extension qualifier="selenium">
-        <property name="browser">*mock</property>
+        <property name="browser">*mock</property> <!-- *firefox, *mock, *... -->
         <!--property name="serverPort">15556</property>  
         <property name="serverHost">127.0.0.1</property-->              
     </extension> 
@@ -28,7 +28,6 @@
 	</extension-->
 	<extension qualifier="webdriver">
 	    <!--property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:15556/wd/hub/</property--> 
-	    <property name="browserCapabilities">htmlUnit</property>
-		<property name="javascriptEnabled">true</property> 
+	    <property name="browser">phantomjs</property> <!-- phantomjs, htmlUnit -->
 	</extension>
 </arquillian>
