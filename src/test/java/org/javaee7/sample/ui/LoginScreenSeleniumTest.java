@@ -64,7 +64,7 @@ public class LoginScreenSeleniumTest {
                 "faces-config.xml");
     }
     
-    /*@Drone
+    @Drone
     DefaultSelenium browser;
     
     
@@ -80,7 +80,7 @@ public class LoginScreenSeleniumTest {
 
         Assert.assertTrue("User should be logged in!",
             browser.isElementPresent("xpath=//li[contains(text(),'Welcome')]"));
-    }*/
+    }
     
     @Drone
     WebDriver webDriver;
