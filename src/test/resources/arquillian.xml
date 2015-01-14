@@ -19,11 +19,14 @@
     <extension qualifier="selenium">
         <property name="browser">*firefox</property>
         <property name="serverPort">15556</property>  
-        <property name="serverHost">${env.OPENSHIFT_JBOSSEAP_IP}</property>              
+        <property name="serverHost">127.0.0.1</property>              
     </extension> 
     <extension qualifier="selenium-server">
         <property name="enable">true</property>
-        <property name="host">${env.OPENSHIFT_JBOSSEAP_IP}</property>
+        <property name="host">127.0.0.1</property>
         <property name="port">15556</property>
+	</extension>
+	<extension qualifier="webdriver">
+	    <property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:15556/wd/hub/</property> 
 	</extension>
 </arquillian>
