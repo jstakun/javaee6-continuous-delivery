@@ -8,7 +8,7 @@
     <body>
         <h1>Hello Java EE 6 Continuous Delivery!</h1>
         
-        GET all the <a href="${pageContext.request.contextPath}/resources/persons"/>persons</a>.<br/>
-        <a href="/login.xhtml">Login</a>
+        GET all the <a href="${pageContext.request.contextPath}/resources/persons">persons</a>.<br/>
+        <a href="/login.jsf">Login</a>
     </body>
 </html>
