@@ -1,1 +1,2 @@
-This is port to EAP 6 cartridge
+This is port of Arun https://github.com/arun-gupta/javaee7-continuous-delivery application to Openshift 2.2 EAP gear.
+It is extended with user interface testing based on Drone and HtmlUnit web driver.
