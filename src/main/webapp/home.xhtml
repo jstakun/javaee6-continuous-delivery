@@ -9,7 +9,7 @@
     <h:body>
         <h:messages/>
         <h:panelGroup rendered="#{loginController.loggedIn}">
-            <p>You are signed in as #{currentUser.username}.</p>
+            <p>You are signed in as #{loginController.currentUser.username}.</p>
         </h:panelGroup>
     </h:body>
 </html>
