@@ -18,14 +18,14 @@
     </container>
     <extension qualifier="selenium">
         <property name="browser">*mock</property> <!-- *firefox, *mock, *... -->
-        <!--property name="serverPort">15556</property>  
-        <property name="serverHost">127.0.0.1</property-->              
+        <property name="serverPort">8080</property>  
+        <property name="serverHost">localhost</property>              
     </extension> 
-    <!--extension qualifier="selenium-server">
+    <extension qualifier="selenium-server">
         <property name="enable">true</property>
-        <property name="host">127.0.0.1</property>
-        <property name="port">15556</property>
-	</extension-->
+        <property name="host">localhost</property>
+        <property name="port">8080</property>
+	</extension>
 	<extension qualifier="webdriver">
 	    <!--property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:15556/wd/hub/</property--> 
 	    <property name="browser">phantomjs</property> <!-- phantomjs, htmlUnit -->
