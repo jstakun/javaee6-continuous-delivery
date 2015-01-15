@@ -19,15 +19,15 @@
     <extension qualifier="selenium">
         <property name="browser">*mock</property> <!-- *firefox, *mock, *... -->
         <property name="serverPort">8080</property>  
-        <property name="serverHost">localhost</property>              
+        <property name="serverHost">milestogobldr-ose2.redhat.pl</property>              
     </extension> 
     <extension qualifier="selenium-server">
         <property name="enable">true</property>
-        <property name="host">localhost</property>
+        <property name="host">milestogobldr-ose2.redhat.pl</property>
         <property name="port">8080</property>
 	</extension>
 	<extension qualifier="webdriver">
-	    <!--property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:15556/wd/hub/</property--> 
+	    <property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:8080/wd/hub/</property> 
 	    <property name="browser">phantomjs</property> <!-- phantomjs, htmlUnit -->
 	</extension>
 </arquillian>
