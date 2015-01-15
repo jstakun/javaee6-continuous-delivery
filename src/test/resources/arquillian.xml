@@ -16,19 +16,23 @@
             <property name="jbossHome">/opt/jboss-eap-6.2</property>
          </configuration>   
     </container>
-    <extension qualifier="selenium">
+    <!--extension qualifier="selenium">
         <property name="browser">*mock</property>
         <property name="serverPort">8080</property>  
         <property name="serverHost">milestogobldr-ose2.redhat.pl</property>      
         <property name="debug">true</property>        
-    </extension> 
+    </extension--> 
     <extension qualifier="selenium-server">
         <property name="debug">true</property>
         <property name="host">milestogobldr-ose2.redhat.pl</property>
         <property name="port">8080</property>
+        <property name="skip">true</property>
 	</extension>
 	<extension qualifier="webdriver">
 	    <!--property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:8080/wd/hub/</property--> 
 	    <property name="browser">phantomjs</property> <!-- phantomjs, htmlUnit -->
+	</extension>
+	<extension qualifier="drone">
+   		<property name="instantiationTimeoutInSeconds">120</property>
 	</extension>
 </arquillian>
