@@ -93,6 +93,6 @@ public class LoginScreenSeleniumTest {
     	webDriver.findElement(By.id("loginForm:username")).sendKeys("user1");
     	webDriver.findElement(By.id("loginForm:password")).sendKeys("demo");
     	webDriver.findElement(By.id("loginForm:login")).click();
-    	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome1')]")).isDisplayed());
+    	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome')]")).isDisplayed());
     }
 }

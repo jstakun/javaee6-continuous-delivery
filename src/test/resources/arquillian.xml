@@ -16,12 +16,12 @@
             <property name="jbossHome">/opt/jboss-eap-6.2</property>
          </configuration>   
     </container>
-    <!--extension qualifier="selenium">
-        <property name="browser">*mock</property>
+    <extension qualifier="selenium">
+        <property name="browser">*firefox</property>
         <property name="serverPort">8080</property>  
         <property name="serverHost">milestogobldr-ose2.redhat.pl</property>      
         <property name="debug">true</property>        
-    </extension--> 
+    </extension> 
     <extension qualifier="selenium-server">
         <property name="debug">true</property>
         <property name="host">milestogobldr-ose2.redhat.pl</property>
