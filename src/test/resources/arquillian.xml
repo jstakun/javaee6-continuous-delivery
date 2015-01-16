@@ -31,6 +31,7 @@
 	<extension qualifier="webdriver">
 	    <!--property name="remoteAddress">http://milestogobldr-ose2.redhat.pl:8080/wd/hub/</property--> 
 	    <property name="browser">htmlUnit</property> <!-- phantomjs, htmlUnit -->
+	    <!-- TODO phantomjs need to bind to 15000-35530 range port -->
 	</extension>
 	<extension qualifier="drone">
    		<property name="instantiationTimeoutInSeconds">120</property>
