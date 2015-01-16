@@ -1,3 +1,0 @@
-This is port of Arun [javaee7-continuous-delivery](https://github.com/arun-gupta/javaee7-continuous-delivery) application to Openshift 2.2 gear running with EAP 6 cartridge.
-
-It is merged with [arquillian-drone-tutorial](https://github.com/arquillian/arquillian-examples/tree/master/arquillian-drone-tutorial) for user interface testing based on Drone and HtmlUnit web driver.

@@ -1,0 +1,13 @@
+This is port of Arun [javaee7-continuous-delivery](https://github.com/arun-gupta/javaee7-continuous-delivery) application to Openshift 2.2 gear running with EAP 6 cartridge.
+
+It is merged with [arquillian-drone-tutorial](https://github.com/arquillian/arquillian-examples/tree/master/arquillian-drone-tutorial) for user interface testing based on Drone and HtmlUnit web driver.
+
+Install Guide
+
+Familarise yourself with [Arun blog](http://blog.arungupta.me/deployment-pipeline-javaee7-wildfly-arquillian-openshift-jenkins-techtip56/).
+
+1. Create tester gear where Arquillian will deploy your application for testing.
+2. Configure demo application to use jenkins.
+3. Update jenkins build job configuration to execute maven tests and set env variables. (As per Arun blog)
+4. Configure jenkins-openshift container (login and libraDomain properties) in arquillian.xml. (As per Arun blog)
+5. Commit code!
