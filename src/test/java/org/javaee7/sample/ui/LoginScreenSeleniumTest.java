@@ -64,7 +64,7 @@ public class LoginScreenSeleniumTest {
                 "faces-config.xml");
     }
     
-    /* uncomment selenium extension in arquillian.xml
+    /*uncomment selenium extension in arquillian.xml
       
     @Drone
     DefaultSelenium browser;
@@ -82,7 +82,9 @@ public class LoginScreenSeleniumTest {
 
         Assert.assertTrue("User should be logged in!",
             browser.isElementPresent("xpath=//li[contains(text(),'Welcome')]"));
-    }*/
+    }
+    
+    */
     
     @Drone
     WebDriver webDriver;
