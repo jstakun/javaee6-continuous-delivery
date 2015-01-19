@@ -64,7 +64,7 @@ public class LoginScreenSeleniumTest {
                 "faces-config.xml");
     }
     
-    /*uncomment selenium extension in arquillian.xml
+    /*/uncomment selenium extension in arquillian.xml
       
     @Drone
     DefaultSelenium browser;
