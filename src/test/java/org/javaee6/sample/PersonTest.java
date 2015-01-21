@@ -1,10 +1,11 @@
-package org.javaee7.sample;
+package org.javaee6.sample;
 
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
 
+import org.javaee6.sample.Person;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -28,7 +29,7 @@ public class PersonTest {
     @Deployment(testable = false)
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addPackage("org.javaee7.sample");
+                .addPackage("org.javaee6.sample");
     }
 
     @ArquillianResource

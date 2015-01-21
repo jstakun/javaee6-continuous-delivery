@@ -1,4 +1,4 @@
-package org.javaee7.sample;
+package org.javaee6.sample;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

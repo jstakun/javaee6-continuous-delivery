@@ -1,21 +1,6 @@
-/*
- * Copyright 2012, Red Hat Middleware LLC, and individual contributors
- * by the @authors tag. See the copyright.txt in the distribution for a
- * full listing of individual contributors.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-package org.javaee7.sample.ui;
+package org.javaee6.sample.ui;
+
+import static org.junit.Assert.assertTrue;
 
 import java.net.URL;
 
@@ -35,6 +20,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 
@@ -43,7 +30,7 @@ import com.thoughtworks.selenium.DefaultSelenium;
  * @author <a href="http://community.jboss.org/people/kpiwko">Karel Piwko</a>
  */
 @RunWith(Arquillian.class)
-public class LoginScreenSeleniumTest {
+public class LoginScreenTest {
     private static final String WEBAPP_SRC = "src/main/webapp";
     
     @ArquillianResource
@@ -89,12 +76,19 @@ public class LoginScreenSeleniumTest {
     @Drone
     WebDriver webDriver;
     
+    @FindBy(id="loginForm:username")
+    private WebElement usernameInput;
+    @FindBy(id="loginForm:password")
+    private WebElement passwordInput;
+    @FindBy(id="loginForm:login")
+    private WebElement loginButton;
+    
     @Test
     public void with_web_driver() {
     	webDriver.get(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
-    	webDriver.findElement(By.id("loginForm:username")).sendKeys("user1");
-    	webDriver.findElement(By.id("loginForm:password")).sendKeys("demo");
-    	webDriver.findElement(By.id("loginForm:login")).click();
-    	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome')]")).isDisplayed());
+    	usernameInput.sendKeys("user1");
+    	passwordInput.sendKeys("demo");
+    	loginButton.click();
+    	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome!')]")).isDisplayed());
     }
 }
