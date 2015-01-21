@@ -1,11 +1,14 @@
 package org.javaee6.sample.ui;
 
 import static org.junit.Assert.assertTrue;
+import static org.jboss.arquillian.graphene.Graphene.guardHttp;
+import static org.jboss.arquillian.graphene.Graphene.waitModel;
 
 import java.net.URL;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.drone.api.annotation.Drone;
+import org.jboss.arquillian.graphene.findby.FindByJQuery;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
 import org.jboss.shrinkwrap.api.Filters;
@@ -25,13 +28,13 @@ import org.openqa.selenium.support.FindBy;
 
 import com.thoughtworks.selenium.DefaultSelenium;
 
-/**
- * @author <a href="http://community.jboss.org/people/dan.j.allen">Dan Allen</a>
- * @author <a href="http://community.jboss.org/people/kpiwko">Karel Piwko</a>
- */
+
+
 @RunWith(Arquillian.class)
 public class LoginScreenTest {
     private static final String WEBAPP_SRC = "src/main/webapp";
+    private static final String USER = "user1";
+    private static final String PASSWORD = "demo";
     
     @ArquillianResource
     URL deploymentUrl;
@@ -62,8 +65,8 @@ public class LoginScreenTest {
     	
     	browser.open(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
         
-        browser.type("id=loginForm:username", "user1");
-        browser.type("id=loginForm:password", "demo");
+        browser.type("id=loginForm:username", USER);
+        browser.type("id=loginForm:password", PASSWORD);
         browser.click("id=loginForm:login");
         browser.waitForPageToLoad("15000");
 
@@ -86,9 +89,29 @@ public class LoginScreenTest {
     @Test
     public void with_web_driver() {
     	webDriver.get(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
-    	usernameInput.sendKeys("user1");
-    	passwordInput.sendKeys("demo");
+    	usernameInput.sendKeys(USER);
+    	passwordInput.sendKeys(PASSWORD);
     	loginButton.click();
     	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome!')]")).isDisplayed());
+    	String expression = "//p[contains(text(),'You are signed in as " + USER + ".')]";
+    	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath(expression)).isDisplayed());
+    }
+    
+    @FindBy(tagName = "li")
+    private WebElement facesMessage;
+    
+    @FindByJQuery("p:visible")                 
+    private WebElement signedAs;
+    
+    @Test
+    public void with_graphene() {
+    	webDriver.get(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
+    	usernameInput.sendKeys(USER);
+    	passwordInput.sendKeys(PASSWORD);
+    	guardHttp(loginButton).click();
+    	
+    	waitModel().until().element(facesMessage).is().present();    
+    	Assert.assertEquals("Welcome!", facesMessage.getText().trim());
+    	assertTrue(signedAs.getText().contains(USER));
     }
 }

@@ -36,6 +36,8 @@ public class LoginController implements Serializable {
     
     private static final String SUCCESS_MESSAGE = "Welcome!";
     private static final String FAILURE_MESSAGE = "Incorrect username and password combination.";
+    private static final String USER = "user1";
+    private static final String PASSWORD = "demo";
 
     private User currentUser;
     
@@ -43,9 +45,9 @@ public class LoginController implements Serializable {
     private Credentials credentials;
     
     public String login() {
-        if ("user1".equals(credentials.getUsername()) &&
-            "demo".equals(credentials.getPassword())) {
-            currentUser = new User("demo");
+        if (USER.equals(credentials.getUsername()) &&
+            PASSWORD.equals(credentials.getPassword())) {
+            currentUser = new User(USER);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(SUCCESS_MESSAGE));
             return "home.xhtml";
         }
