@@ -62,16 +62,15 @@ public class LoginScreenTest {
     
     @Test
     public void should_login_with_valid_credentials() {
-    	
-    	browser.open(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
-        
+    	System.out.println("I'm running selenium test...");
+    	browser.open(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");       
         browser.type("id=loginForm:username", USER);
         browser.type("id=loginForm:password", PASSWORD);
         browser.click("id=loginForm:login");
         browser.waitForPageToLoad("15000");
-
         Assert.assertTrue("User should be logged in!",
             browser.isElementPresent("xpath=//li[contains(text(),'Welcome')]"));
+        System.out.println("Done.");    
     }
     
     */
@@ -88,6 +87,7 @@ public class LoginScreenTest {
     
     @Test
     public void with_web_driver() {
+    	System.out.println("I'm running web driver test...");
     	webDriver.get(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
     	usernameInput.sendKeys(USER);
     	passwordInput.sendKeys(PASSWORD);
@@ -95,6 +95,7 @@ public class LoginScreenTest {
     	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath("//li[contains(text(),'Welcome!')]")).isDisplayed());
     	String expression = "//p[contains(text(),'You are signed in as " + USER + ".')]";
     	Assert.assertTrue("User is logged in.", webDriver.findElement(By.xpath(expression)).isDisplayed());
+    	System.out.println("Done.");
     }
     
     @FindBy(tagName = "li")
@@ -105,13 +106,15 @@ public class LoginScreenTest {
     
     @Test
     public void with_graphene() {
+    	System.out.println("I'm running graphene test...");
     	webDriver.get(deploymentUrl.toString().replaceFirst("/$", "") + "/login.jsf");
     	usernameInput.sendKeys(USER);
     	passwordInput.sendKeys(PASSWORD);
-    	guardHttp(loginButton).click();
-    	
+    	//guardHttp(loginButton).click();   
+    	loginButton.click();
     	waitModel().until().element(facesMessage).is().present();    
     	Assert.assertEquals("Welcome!", facesMessage.getText().trim());
     	assertTrue(signedAs.getText().contains(USER));
+       	System.out.println("Done.");
     }
 }
